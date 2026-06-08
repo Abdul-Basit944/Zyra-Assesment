@@ -23,9 +23,9 @@ class Overview(BaseModel):
 
 
 class TuitionItem(BaseModel):
-    fee_type: Optional[str] = None   # e.g. "Tuition", "Room & Board", "Student Fees"
-    cost: Optional[int] = None       # integer — normalize floats by rounding
-    currency: Optional[str] = None   # e.g. "USD"
+    fee_type: Optional[str] = None   
+    cost: Optional[int] = None       
+    currency: Optional[str] = None  
 
 
 class DeadlineType(str, Enum):
@@ -35,17 +35,16 @@ class DeadlineType(str, Enum):
 
 
 class AdmissionDeadline(BaseModel):
-    deadline_type: Optional[DeadlineType] = None   # must match enum exactly
-    deadline_date: Optional[str] = None            # e.g. "November 1, 2024"
+    deadline_type: Optional[DeadlineType] = None  
+    deadline_date: Optional[str] = None          
     notes: Optional[str] = None
 
 
 class PageMetadata(BaseModel):
     url: Optional[str] = None
     page_title: Optional[str] = None
-    scraped_at: Optional[str] = None   # ISO 8601 datetime string
-    status_code: Optional[str] = None  # stored as string e.g. "200"
-
+    scraped_at: Optional[str] = None
+    status_code: Optional[str] = None  
 
 class UniversityData(BaseModel):
     overview: Optional[Overview] = None
