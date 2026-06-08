@@ -1,0 +1,143 @@
+{
+  "overview": {
+    "university_name": "Bucknell University",
+    "location": {
+      "city": null,
+      "state": null,
+      "country": "United States",
+      "postal_code": null
+    },
+    "contact": {
+      "phone": "+1 (570) 577-1331",
+      "email": "finaid@bucknell.edu"
+    }
+  },
+  "tuition_breakdown": [
+    {
+      "fee_type": "Tuition",
+      "cost": 72600,
+      "currency": "USD"
+    },
+    {
+      "fee_type": "Housing (on-campus)",
+      "cost": 11400,
+      "currency": "USD"
+    },
+    {
+      "fee_type": "Housing (off-campus)",
+      "cost": 11400,
+      "currency": "USD"
+    },
+    {
+      "fee_type": "Housing (living with family)",
+      "cost": 2000,
+      "currency": "USD"
+    },
+    {
+      "fee_type": "Dining (meal plan)",
+      "cost": 6980,
+      "currency": "USD"
+    },
+    {
+      "fee_type": "Dining (off-campus)",
+      "cost": 2000,
+      "currency": "USD"
+    },
+    {
+      "fee_type": "Student Activity Fee",
+      "cost": 900,
+      "currency": "USD"
+    },
+    {
+      "fee_type": "Books & Supplies",
+      "cost": 900,
+      "currency": "USD"
+    },
+    {
+      "fee_type": "Transportation",
+      "cost": 800,
+      "currency": "USD"
+    },
+    {
+      "fee_type": "Personal Expenses",
+      "cost": 2000,
+      "currency": "USD"
+    },
+    {
+      "fee_type": "Orientation fee (one-time)",
+      "cost": 500,
+      "currency": "USD"
+    },
+    {
+      "fee_type": "International Orientation fee (one-time)",
+      "cost": 750,
+      "currency": "USD"
+    },
+    {
+      "fee_type": "Audit fee (per course)",
+      "cost": 300,
+      "currency": "USD"
+    },
+    {
+      "fee_type": "Credit by examination (per course)",
+      "cost": 500,
+      "currency": "USD"
+    },
+    {
+      "fee_type": "Private music lessons (per semester)",
+      "cost": 625,
+      "currency": "USD"
+    },
+    {
+      "fee_type": "Single-course rate (part-time students only)",
+      "cost": 6600,
+      "currency": "USD"
+    },
+    {
+      "fee_type": "Course overload fee (per credit, prorated for courses under one credit)",
+      "cost": 6600,
+      "currency": "USD"
+    }
+  ],
+  "admission_deadlines": [
+    {
+      "deadline_type": "Early Decision",
+      "deadline_date": "November 1, 2025",
+      "notes": "for Early Decision I"
+    },
+    {
+      "deadline_type": "Early Decision",
+      "deadline_date": "January 10, 2026",
+      "notes": "for Early Decision II"
+    },
+    {
+      "deadline_type": "Regular Decision",
+      "deadline_date": "January 10, 2026",
+      "notes": null
+    },
+    {
+      "deadline_type": "Transfer Admission",
+      "deadline_date": "March 15",
+      "notes": "for Fall semester"
+    },
+    {
+      "deadline_type": "Transfer Admission",
+      "deadline_date": "November 1",
+      "notes": "for Spring semester"
+    }
+  ],
+  "page_metadata": [
+    {
+      "url": "https://www.bucknell.edu/admissions-aid/admissions-dates-deadlines",
+      "page_title": "Admissions Dates & Deadlines",
+      "scraped_at": "2026-06-08T21:08:45.454944+00:00",
+      "status_code": "200"
+    },
+    {
+      "url": "https://www.bucknell.edu/admissions-aid/tuition-fees-financial-aid",
+      "page_title": "Tuition, Fees & Financial Aid",
+      "scraped_at": "2026-06-08T21:08:46.304125+00:00",
+      "status_code": "200"
+    }
+  ]
+}
