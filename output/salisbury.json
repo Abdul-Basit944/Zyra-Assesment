@@ -4,7 +4,7 @@
     "location": {
       "city": "Salisbury",
       "state": "Maryland",
-      "country": "United States",
+      "country": "USA",
       "postal_code": null
     },
     "contact": null
@@ -16,94 +16,49 @@
       "currency": "USD"
     },
     {
-      "fee_type": "Tuition and Mandatory Fees (Out-of-State)",
+      "fee_type": "Tuition and Mandatory Fees",
       "cost": 23590,
       "currency": "USD"
     },
     {
-      "fee_type": "Housing",
-      "cost": 8150,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Food",
-      "cost": 6368,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Books, Supplies, Course Materials & Equipment",
-      "cost": 1300,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Personal/Trans/Misc.",
-      "cost": 3900,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Loan Fee Allowance",
-      "cost": 312,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Tuition (per credit hour, Maryland Residents, Graduate)",
+      "fee_type": "Tuition",
       "cost": 453,
       "currency": "USD"
     },
     {
-      "fee_type": "Mandatory Fees (per credit hour, Graduate)",
+      "fee_type": "Tuition",
+      "cost": 837,
+      "currency": "USD"
+    },
+    {
+      "fee_type": "Tuition",
+      "cost": 549,
+      "currency": "USD"
+    },
+    {
+      "fee_type": "Mandatory Fees",
       "cost": 129,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Tuition and Mandatory Fees (per credit hour, Non-Residents, Graduate)",
-      "cost": 582,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Tuition and Mandatory Fees (per credit hour, Non-Residents, Regional Hagerstown, Graduate)",
-      "cost": 678,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Tuition and Mandatory Fees (Graduate, Maryland Residents, Annual)",
-      "cost": 10476,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Tuition and Mandatory Fees (Graduate, Non-Residents, Annual)",
-      "cost": 17388,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Tuition and Mandatory Fees (Graduate, Non-Residents, Regional Hagerstown, Annual)",
-      "cost": 12204,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Loan Fee Allowance (Graduate)",
-      "cost": 326,
       "currency": "USD"
     }
   ],
   "admission_deadlines": [
     {
       "deadline_type": null,
-      "deadline_date": null,
-      "notes": null
+      "deadline_date": "Not specified",
+      "notes": "Now accepting applications"
     }
   ],
   "page_metadata": [
     {
       "url": "https://www.salisbury.edu/admissions/apply-now.aspx",
       "page_title": "Apply Now | Salisbury University",
-      "scraped_at": "2026-06-08T21:12:02.419157+00:00",
+      "scraped_at": "2026-06-08T22:44:23.244867+00:00",
       "status_code": "200"
     },
     {
       "url": "https://www.salisbury.edu/admissions/financial-aid/cost-of-attendance",
       "page_title": "Salisbury University Cost of Attendance | Salisbury University",
-      "scraped_at": "2026-06-08T21:12:04.205145+00:00",
+      "scraped_at": "2026-06-08T22:44:25.215653+00:00",
       "status_code": "200"
     }
   ]
