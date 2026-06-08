@@ -3,7 +3,6 @@ from typing import List, Optional
 from pydantic import BaseModel, EmailStr
 
 
-
 class Location(BaseModel):
     city: Optional[str] = None
     state: Optional[str] = None
@@ -23,9 +22,9 @@ class Overview(BaseModel):
 
 
 class TuitionItem(BaseModel):
-    fee_type: Optional[str] = None   
-    cost: Optional[int] = None       
-    currency: Optional[str] = None  
+    fee_type: Optional[str] = None
+    cost: Optional[int] = None
+    currency: Optional[str] = None
 
 
 class DeadlineType(str, Enum):
@@ -35,8 +34,8 @@ class DeadlineType(str, Enum):
 
 
 class AdmissionDeadline(BaseModel):
-    deadline_type: Optional[DeadlineType] = None  
-    deadline_date: Optional[str] = None          
+    deadline_type: Optional[DeadlineType] = None
+    deadline_date: Optional[str] = None
     notes: Optional[str] = None
 
 
@@ -44,7 +43,8 @@ class PageMetadata(BaseModel):
     url: Optional[str] = None
     page_title: Optional[str] = None
     scraped_at: Optional[str] = None
-    status_code: Optional[str] = None  
+    status_code: Optional[str] = None
+
 
 class UniversityData(BaseModel):
     overview: Optional[Overview] = None
