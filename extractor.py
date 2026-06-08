@@ -1,23 +1,7 @@
-﻿"""
-extractor.py
-------------
-Fetches crawled pages and uses Gemini to extract structured data
-conforming to the UniversityData Pydantic schema.
-
-Design decisions:
-- LLM (Gemini) is used for extraction, not regex. Real university pages
-  have wildly inconsistent HTML; structured prompting is far more robust.
-- Each page is cleaned to plain text before sending to the LLM to save tokens.
-- We prompt Gemini to return strict JSON and parse it into Pydantic models.
-- Admissions and tuition pages are processed separately with targeted prompts.
-- All fields are Optional — the LLM is instructed to return null rather than guess.
-"""
-
 import json
 import logging
 import re
 from datetime import datetime, timezone
-
 import requests
 from bs4 import BeautifulSoup
 from groq import Groq
@@ -37,27 +21,21 @@ logger = logging.getLogger(__name__)
 
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; UniversityETL/1.0)"}
 REQUEST_TIMEOUT = 10
-MAX_TEXT_CHARS = 6000   # ~1500 tokens — enough context without blowing budget
+MAX_TEXT_CHARS = 6000  
 
-# ── Deadline label normalisation ─────────────────────────────────────────────
-# Map common page labels → DeadlineType enum values.
-# The LLM is prompted to use these exact strings, but we normalize as a safety net.
 _DEADLINE_LABEL_MAP = {
-    # Early Decision variants
     "early decision": DeadlineType.EARLY_DECISION,
     "early decision i": DeadlineType.EARLY_DECISION,
     "early decision ii": DeadlineType.EARLY_DECISION,
     "ed": DeadlineType.EARLY_DECISION,
     "ed i": DeadlineType.EARLY_DECISION,
     "ed ii": DeadlineType.EARLY_DECISION,
-    "early action": DeadlineType.EARLY_DECISION,      # closest match
+    "early action": DeadlineType.EARLY_DECISION,     
     "restrictive early action": DeadlineType.EARLY_DECISION,
-    # Regular Decision variants
     "regular decision": DeadlineType.REGULAR_DECISION,
     "regular admission": DeadlineType.REGULAR_DECISION,
     "rd": DeadlineType.REGULAR_DECISION,
     "rolling admission": DeadlineType.REGULAR_DECISION,
-    # Transfer variants
     "transfer": DeadlineType.TRANSFER_ADMISSION,
     "transfer admission": DeadlineType.TRANSFER_ADMISSION,
     "transfer application": DeadlineType.TRANSFER_ADMISSION,
@@ -70,9 +48,6 @@ def _normalise_deadline_type(raw: str | None) -> DeadlineType | None:
         return None
     key = raw.strip().lower()
     return _DEADLINE_LABEL_MAP.get(key)
-
-
-# ── HTML → clean text ─────────────────────────────────────────────────────────
 
 def fetch_and_clean(url: str) -> tuple[str, int, str]:
     """
@@ -88,7 +63,6 @@ def fetch_and_clean(url: str) -> tuple[str, int, str]:
 
         soup = BeautifulSoup(resp.text, "html.parser")
 
-        # Strip non-content elements
         for tag in soup(["script", "style", "noscript", "nav", "footer",
                          "header", "aside", "form", "iframe"]):
             tag.decompose()
@@ -96,7 +70,6 @@ def fetch_and_clean(url: str) -> tuple[str, int, str]:
         title = soup.title.string.strip() if soup.title and soup.title.string else ""
         text = soup.get_text(separator=" ", strip=True)
 
-        # Collapse whitespace
         text = re.sub(r"\s{2,}", " ", text)
 
         return text[:MAX_TEXT_CHARS], status, title
@@ -104,9 +77,6 @@ def fetch_and_clean(url: str) -> tuple[str, int, str]:
     except requests.RequestException as e:
         logger.warning(f"Failed to fetch {url}: {e}")
         return "", 0, ""
-
-
-# ── Gemini helpers ────────────────────────────────────────────────────────────
 
 def _call_gemini(client: Groq, prompt: str) -> dict:
     """
@@ -143,7 +113,6 @@ def _call_gemini(client: Groq, prompt: str) -> dict:
     return {}
 
 
-# ── Targeted extraction prompts ───────────────────────────────────────────────
 
 _OVERVIEW_PROMPT = """
 You are extracting structured data from a university website page.
@@ -227,8 +196,6 @@ Page text:
 """
 
 
-# ── Main extractor ────────────────────────────────────────────────────────────
-
 class UniversityExtractor:
     def __init__(self, api_key: str):
         self.client = Groq(api_key=api_key)
@@ -244,7 +211,6 @@ class UniversityExtractor:
         """
         page_metadata: list[PageMetadata] = []
 
-        # ── Fetch pages ───────────────────────────────────────────────────────
         admissions_text, admissions_title = "", ""
         tuition_text, tuition_title = "", ""
 
@@ -268,10 +234,8 @@ class UniversityExtractor:
                 status_code=str(status),
             ))
 
-        # Use whichever page has more content for overview extraction
         overview_text = admissions_text if len(admissions_text) >= len(tuition_text) else tuition_text
 
-        # ── Extract overview / contact ────────────────────────────────────────
         overview: Overview | None = None
         if overview_text:
             raw = _call_gemini(self.client, _OVERVIEW_PROMPT.format(text=overview_text))
@@ -289,16 +253,13 @@ class UniversityExtractor:
                         email=raw.get("email"),
                     ) if any(raw.get(k) for k in ("phone", "email")) else None,
                 )
-
-        # ── Extract admission deadlines ───────────────────────────────────────
+              
         admission_deadlines: list[AdmissionDeadline] = []
         if admissions_text:
             raw = _call_gemini(self.client, _ADMISSIONS_PROMPT.format(text=admissions_text))
             for item in raw.get("deadlines", []):
-                # Normalize deadline_type through our map as a safety net
                 dtype = _normalise_deadline_type(item.get("deadline_type"))
                 try:
-                    # Validate through the enum directly if LLM returned the right string
                     if dtype is None and item.get("deadline_type"):
                         dtype = DeadlineType(item["deadline_type"])
                 except ValueError:
@@ -310,13 +271,11 @@ class UniversityExtractor:
                     notes=item.get("notes"),
                 ))
 
-        # ── Extract tuition breakdown ─────────────────────────────────────────
         tuition_breakdown: list[TuitionItem] = []
         if tuition_text:
             raw = _call_gemini(self.client, _TUITION_PROMPT.format(text=tuition_text))
             for item in raw.get("tuition_items", []):
                 raw_cost = item.get("cost")
-                # Coerce to int safely (LLM sometimes returns "52340" as a string)
                 cost: int | None = None
                 if raw_cost is not None:
                     try:
