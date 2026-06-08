@@ -2,13 +2,13 @@
   "overview": {
     "university_name": "Bucknell University",
     "location": {
-      "city": null,
-      "state": null,
+      "city": "Lewisburg",
+      "state": "Pennsylvania",
       "country": "United States",
-      "postal_code": null
+      "postal_code": "17837"
     },
     "contact": {
-      "phone": "+1 (570) 577-1331",
+      "phone": "570-577-1331",
       "email": "finaid@bucknell.edu"
     }
   },
@@ -19,43 +19,23 @@
       "currency": "USD"
     },
     {
-      "fee_type": "Housing (on-campus)",
+      "fee_type": "Housing",
       "cost": 11400,
       "currency": "USD"
     },
     {
-      "fee_type": "Housing (off-campus)",
-      "cost": 11400,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Housing (living with family)",
-      "cost": 2000,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Dining (meal plan)",
+      "fee_type": "Approximate Meal Plan Cost",
       "cost": 6980,
       "currency": "USD"
     },
     {
-      "fee_type": "Dining (off-campus)",
-      "cost": 2000,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Student Activity Fee",
+      "fee_type": "Activity Fee",
       "cost": 900,
       "currency": "USD"
     },
     {
-      "fee_type": "Books & Supplies",
+      "fee_type": "Books, course materials, supplies and equipment",
       "cost": 900,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Transportation",
-      "cost": 800,
       "currency": "USD"
     },
     {
@@ -64,37 +44,42 @@
       "currency": "USD"
     },
     {
-      "fee_type": "Orientation fee (one-time)",
+      "fee_type": "Transportation",
+      "cost": 800,
+      "currency": "USD"
+    },
+    {
+      "fee_type": "Orientation fee",
       "cost": 500,
       "currency": "USD"
     },
     {
-      "fee_type": "International Orientation fee (one-time)",
+      "fee_type": "International Orientation fee",
       "cost": 750,
       "currency": "USD"
     },
     {
-      "fee_type": "Audit fee (per course)",
+      "fee_type": "Audit fee",
       "cost": 300,
       "currency": "USD"
     },
     {
-      "fee_type": "Credit by examination (per course)",
+      "fee_type": "Credit by examination",
       "cost": 500,
       "currency": "USD"
     },
     {
-      "fee_type": "Private music lessons (per semester)",
+      "fee_type": "Private music lessons",
       "cost": 625,
       "currency": "USD"
     },
     {
-      "fee_type": "Single-course rate (part-time students only)",
+      "fee_type": "Single-course rate",
       "cost": 6600,
       "currency": "USD"
     },
     {
-      "fee_type": "Course overload fee (per credit, prorated for courses under one credit)",
+      "fee_type": "Course overload fee",
       "cost": 6600,
       "currency": "USD"
     }
@@ -102,41 +87,101 @@
   "admission_deadlines": [
     {
       "deadline_type": "Early Decision",
-      "deadline_date": "November 1, 2025",
-      "notes": "for Early Decision I"
+      "deadline_date": "Nov. 1, 2025",
+      "notes": "Application, scholarship application, CSS Profile and FAFSA due"
+    },
+    {
+      "deadline_type": null,
+      "deadline_date": "Early December",
+      "notes": "Look for an email with details about our release date and time, as well as instructions for accessing your decision"
+    },
+    {
+      "deadline_type": null,
+      "deadline_date": "Mid-December",
+      "notes": "Log in to your Application Status Page to confirm your enrollment"
     },
     {
       "deadline_type": "Early Decision",
-      "deadline_date": "January 10, 2026",
-      "notes": "for Early Decision II"
+      "deadline_date": "Jan. 10, 2026",
+      "notes": "Application, scholarship application, CSS Profile and FAFSA due"
+    },
+    {
+      "deadline_type": null,
+      "deadline_date": "Mid-February",
+      "notes": "Look for an email with details about our release date and time, as well as instructions for accessing your decision"
+    },
+    {
+      "deadline_type": null,
+      "deadline_date": "Late February",
+      "notes": "Log onto your Application Status Page to confirm your enrollment"
     },
     {
       "deadline_type": "Regular Decision",
-      "deadline_date": "January 10, 2026",
-      "notes": null
+      "deadline_date": "Jan. 10, 2026",
+      "notes": "Application, scholarship application, CSS Profile and FAFSA due"
     },
     {
-      "deadline_type": "Transfer Admission",
+      "deadline_type": null,
+      "deadline_date": "Mid-March",
+      "notes": "Look for an email with details about our release date and time, as well as instructions for accessing your decision"
+    },
+    {
+      "deadline_type": null,
+      "deadline_date": "May 1, 2026",
+      "notes": "Log onto your Application Status Page to confirm your enrollment"
+    },
+    {
+      "deadline_type": null,
+      "deadline_date": "Aug. 1, 2025",
+      "notes": "Common Application and Coalition Application open"
+    },
+    {
+      "deadline_type": null,
+      "deadline_date": "Oct. 1, 2025",
+      "notes": "The CSS Profile and FAFSA open for the 25-26 application cycle"
+    },
+    {
+      "deadline_type": null,
+      "deadline_date": "May 5, 2026",
+      "notes": "Any outstanding tax forms or verification documents due"
+    },
+    {
+      "deadline_type": null,
+      "deadline_date": "June 1, 2026",
+      "notes": "Requests to defer enrolment for one year due to Admissions"
+    },
+    {
+      "deadline_type": null,
+      "deadline_date": "July 1, 2026",
+      "notes": "Required for all enrolled students"
+    },
+    {
+      "deadline_type": null,
+      "deadline_date": "July 1, 2026",
+      "notes": "Official final high school transcripts for enrolling students due to Admissions"
+    },
+    {
+      "deadline_type": null,
       "deadline_date": "March 15",
-      "notes": "for Fall semester"
+      "notes": "Decisions available Mid-May"
     },
     {
-      "deadline_type": "Transfer Admission",
-      "deadline_date": "November 1",
-      "notes": "for Spring semester"
+      "deadline_type": null,
+      "deadline_date": "Nov. 1",
+      "notes": "Decisions available Mid-Dec"
     }
   ],
   "page_metadata": [
     {
       "url": "https://www.bucknell.edu/admissions-aid/admissions-dates-deadlines",
       "page_title": "Admissions Dates & Deadlines",
-      "scraped_at": "2026-06-08T21:08:45.454944+00:00",
+      "scraped_at": "2026-06-08T22:40:57.688974+00:00",
       "status_code": "200"
     },
     {
       "url": "https://www.bucknell.edu/admissions-aid/tuition-fees-financial-aid",
       "page_title": "Tuition, Fees & Financial Aid",
-      "scraped_at": "2026-06-08T21:08:46.304125+00:00",
+      "scraped_at": "2026-06-08T22:40:58.428304+00:00",
       "status_code": "200"
     }
   ]
