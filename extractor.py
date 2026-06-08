@@ -46,7 +46,24 @@ _DEADLINE_LABEL_MAP = {
 def _normalise_deadline_type(raw: str | None) -> DeadlineType | None:
     if not raw:
         return None
-    return _DEADLINE_LABEL_MAP.get(raw.strip().lower())
+    return _DEADLINE_LABEL_MAP.get(str(raw).strip().lower())
+
+
+def _stringify_value(value) -> str | None:
+    if value is None:
+        return None
+
+    if isinstance(value, str):
+        text = value.strip()
+        return text or None
+
+    if isinstance(value, (dict, list, tuple, set)):
+        try:
+            return json.dumps(value, ensure_ascii=False)
+        except Exception:
+            return str(value)
+
+    return str(value)
 
 
 def fetch_and_clean(url: str):
@@ -101,7 +118,7 @@ def _call_gemini(client: Groq, prompt: str) -> dict:
 _OVERVIEW_PROMPT = """Extract university overview data as JSON only.
 Return null if unknown.
 
-{
+{{
   "university_name": null,
   "city": null,
   "state": null,
@@ -109,7 +126,7 @@ Return null if unknown.
   "postal_code": null,
   "phone": null,
   "email": null
-}
+}}
 
 Text:
 {text}
@@ -117,15 +134,15 @@ Text:
 
 _ADMISSIONS_PROMPT = """Extract admission deadlines as JSON only.
 
-{
+{{
   "deadlines": [
-    {
+    {{
       "deadline_type": null,
       "deadline_date": null,
       "notes": null
-    }
+    }}
   ]
-}
+}}
 
 Text:
 {text}
@@ -133,15 +150,15 @@ Text:
 
 _TUITION_PROMPT = """Extract tuition data as JSON only.
 
-{
+{{
   "tuition_items": [
-    {
+    {{
       "fee_type": null,
       "cost": null,
       "currency": null
-    }
+    }}
   ]
-}
+}}
 
 Text:
 {text}
@@ -202,12 +219,16 @@ class UniversityExtractor:
         if admissions_text:
             raw = _call_gemini(self.client, _ADMISSIONS_PROMPT.format(text=admissions_text))
             for item in raw.get("deadlines", []):
-                dtype = _normalise_deadline_type(item.get("deadline_type"))
+                deadline_type = _stringify_value(item.get("deadline_type"))
+                deadline_date = _stringify_value(item.get("deadline_date"))
+                notes = _stringify_value(item.get("notes"))
+
+                dtype = _normalise_deadline_type(deadline_type)
 
                 admission_deadlines.append(AdmissionDeadline(
                     deadline_type=dtype,
-                    deadline_date=item.get("deadline_date"),
-                    notes=item.get("notes"),
+                    deadline_date=deadline_date,
+                    notes=notes,
                 ))
 
         tuition_breakdown = []
