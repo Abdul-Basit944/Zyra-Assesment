@@ -1,16 +1,3 @@
-"""
-main.py
--------
-Entry point for the university ETL pipeline.
-
-Flow:
-  1. Crawl the seed domain (BFS, max depth 2)
-  2. Score and categorise discovered URLs into "admissions" vs "tuition"
-  3. Pass the best URL of each category to UniversityExtractor
-  4. Validate output through Pydantic (UniversityData)
-  5. Write one JSON file per university to ./output/
-"""
-
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -29,9 +16,6 @@ logging.basicConfig(
     datefmt="%H:%M:%S",
 )
 logger = logging.getLogger(__name__)
-
-# ── Category URL signals ────────────────────────────────────────────────
-# Matched against URL path only — no extra fetching needed.
 
 ADMISSIONS_URL_SIGNALS = [
     ("dates-deadlines",       10),
@@ -59,7 +43,6 @@ TUITION_URL_SIGNALS = [
     ("financial-aid",          3),
 ]
 
-# Disqualify pages that superficially match but are not the right page
 DISQUALIFY_PATTERNS = [
     "scholarship-programs",
     "scholarship",
@@ -123,11 +106,10 @@ def run(seed_url: str, name: str, extractor: UniversityExtractor) -> dict:
     """
     logger.info(f"── {name} ({seed_url})")
 
-    # Step 1: crawl
+
     url_scores = crawl(seed_url)
     logger.info(f"  Crawled {len(url_scores)} pages")
 
-    # Step 2: select best admissions + tuition pages
     admissions_url, tuition_url = select_pages(url_scores, seed_url)
 
     if not admissions_url:
@@ -135,13 +117,11 @@ def run(seed_url: str, name: str, extractor: UniversityExtractor) -> dict:
     if not tuition_url:
         logger.warning(f"  Could not identify a tuition page for {name}")
 
-    # Step 3: LLM extraction → validated UniversityData
     data: UniversityData = extractor.extract(
         admissions_url=admissions_url,
         tuition_url=tuition_url,
     )
 
-    # Step 4: Pydantic → dict (exclude unset Nones for clean JSON output)
     return data.model_dump(mode="json")
 
 
