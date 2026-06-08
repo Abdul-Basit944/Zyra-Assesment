@@ -4,236 +4,91 @@
     "location": {
       "city": "Washington",
       "state": "District of Columbia",
-      "country": "United States",
+      "country": "USA",
       "postal_code": null
     },
     "contact": null
   },
   "tuition_breakdown": [
     {
-      "fee_type": "Undergraduate Resident Tuition (per credit hour)",
-      "cost": 324,
+      "fee_type": "Undergraduate Resident",
+      "cost": null,
       "currency": "USD"
     },
     {
-      "fee_type": "Undergraduate Resident Tuition Fee (per semester)",
-      "cost": 430,
+      "fee_type": "Undergraduate Metro",
+      "cost": null,
       "currency": "USD"
     },
     {
-      "fee_type": "Undergraduate Metro Tuition (per credit hour)",
-      "cost": 374,
+      "fee_type": "Undergraduate Non-Resident",
+      "cost": null,
       "currency": "USD"
     },
     {
-      "fee_type": "Undergraduate Metro Tuition Fee (per semester)",
-      "cost": 430,
+      "fee_type": "Undergraduate Engineering Resident",
+      "cost": null,
       "currency": "USD"
     },
     {
-      "fee_type": "Undergraduate Non-Resident Tuition (per credit hour)",
-      "cost": 680,
+      "fee_type": "Undergraduate Engineering Metro",
+      "cost": null,
       "currency": "USD"
     },
     {
-      "fee_type": "Undergraduate Non-Resident Tuition Fee (per semester)",
-      "cost": 430,
+      "fee_type": "Undergraduate Engineering Non-Resident",
+      "cost": null,
       "currency": "USD"
     },
     {
-      "fee_type": "Undergraduate Engineering Resident Tuition (per credit hour)",
-      "cost": 345,
+      "fee_type": "Graduate Resident",
+      "cost": null,
       "currency": "USD"
     },
     {
-      "fee_type": "Undergraduate Engineering Resident Tuition Fee (per semester)",
-      "cost": 430,
+      "fee_type": "Graduate Metro",
+      "cost": null,
       "currency": "USD"
     },
     {
-      "fee_type": "Undergraduate Engineering Metro Tuition (per credit hour)",
-      "cost": 400,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Undergraduate Engineering Metro Tuition Fee (per semester)",
-      "cost": 430,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Undergraduate Engineering Non-Resident Tuition (per credit hour)",
-      "cost": 725,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Undergraduate Engineering Non-Resident Tuition Fee (per semester)",
-      "cost": 430,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Graduate Resident Tuition (per credit hour)",
-      "cost": 513,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Graduate Resident Tuition Fee (per semester)",
-      "cost": 430,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Graduate Metro Tuition (per credit hour)",
-      "cost": 580,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Graduate Metro Tuition Fee (per semester)",
-      "cost": 430,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Graduate Non-Resident Tuition (per credit hour)",
-      "cost": 986,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Graduate Non-Resident Tuition Fee (per semester)",
-      "cost": 430,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Activity Fee",
-      "cost": 35,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Athletic/Recreation Fee",
-      "cost": 105,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Health Services Fee",
-      "cost": 25,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Technology Fee",
-      "cost": 75,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Student Center Fee",
-      "cost": 140,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Career and Professional Fee",
-      "cost": 40,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Sustainability Fee",
-      "cost": 10,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Application Fee (Undergraduate)",
-      "cost": 50,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Application Fee (Graduate)",
-      "cost": 50,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Application Fee (F1 Visas)",
-      "cost": 50,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Credit by Exam Fee (per credit hour)",
-      "cost": 50,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Transcript Fee",
-      "cost": 5,
-      "currency": "USD"
-    },
-    {
-      "fee_type": "Nelnet Campus Commerce Installment Plan Enrollment Fee",
-      "cost": 35,
+      "fee_type": "Graduate Non-Resident",
+      "cost": null,
       "currency": "USD"
     }
   ],
   "admission_deadlines": [
     {
-      "deadline_type": "Regular Decision",
-      "deadline_date": "August 1",
-      "notes": "for Fall term, US students"
+      "deadline_type": null,
+      "deadline_date": "Varies by term",
+      "notes": "Guaranteed seat, admission response, and scholarship consideration"
     },
     {
-      "deadline_type": "Regular Decision",
-      "deadline_date": "April 30",
-      "notes": "for Fall term, International students"
+      "deadline_type": null,
+      "deadline_date": "{\"Fall\": \"August 1 (US), April 30 (International)\", \"Spring\": \"January 1 (US), September 1 (International)\", \"Summer I\": \"May 1 (US), No International Admission\", \"Summer II\": \"May 15 (US), No International Admission\"}",
+      "notes": "Applications submitted after the deadline are considered on a space-available basis"
     },
     {
-      "deadline_type": "Regular Decision",
-      "deadline_date": "January 1",
-      "notes": "for Spring term, US students"
-    },
-    {
-      "deadline_type": "Regular Decision",
-      "deadline_date": "September 1",
-      "notes": "for Spring term, International students"
-    },
-    {
-      "deadline_type": "Regular Decision",
-      "deadline_date": "May 1",
-      "notes": "for Summer I term, US students"
-    },
-    {
-      "deadline_type": "Regular Decision",
-      "deadline_date": "May 15",
-      "notes": "for Summer II term, US students"
-    },
-    {
-      "deadline_type": "Regular Decision",
-      "deadline_date": "March 15",
-      "notes": "for Fall term, Graduate US students"
-    },
-    {
-      "deadline_type": "Regular Decision",
-      "deadline_date": "February 15",
-      "notes": "for Fall term, Graduate International students"
-    },
-    {
-      "deadline_type": "Regular Decision",
-      "deadline_date": "October 15",
-      "notes": "for Spring term, Graduate US students"
-    },
-    {
-      "deadline_type": "Regular Decision",
-      "deadline_date": "September 15",
-      "notes": "for Spring term, Graduate International students"
+      "deadline_type": null,
+      "deadline_date": "{\"Fall\": \"March 15 (US), February 15 (International)\", \"Spring\": \"October 15 (US), September 15 (International)\", \"Summer\": \"No Graduate Admission\"}",
+      "notes": "No graduate admissions for Summer term"
     },
     {
       "deadline_type": null,
       "deadline_date": "April 15",
-      "notes": "Priority Application Deadline for Ph.D. in Urban Leadership and Entrepreneurship"
+      "notes": "Priority application deadline for Ph.D. program"
     }
   ],
   "page_metadata": [
     {
       "url": "https://www.udc.edu/admissions/admission-deadlines",
       "page_title": "Admission Deadlines | Admissions | University of the District of Columbia",
-      "scraped_at": "2026-06-08T21:10:09.852617+00:00",
+      "scraped_at": "2026-06-08T22:42:23.475257+00:00",
       "status_code": "200"
     },
     {
       "url": "https://www.udc.edu/admissions/tuition-fees",
       "page_title": "Tuition & Fees | Admissions | University of the District of Columbia",
-      "scraped_at": "2026-06-08T21:10:10.188603+00:00",
+      "scraped_at": "2026-06-08T22:42:24.074400+00:00",
       "status_code": "200"
     }
   ]
