@@ -2,5 +2,6 @@ requests==2.32.3
 beautifulsoup4==4.12.3
 lxml==5.2.2
 pydantic[email]==2.11.5
+email-validator==2.3.0
 groq==0.13.1
 python-dotenv==1.1.0
