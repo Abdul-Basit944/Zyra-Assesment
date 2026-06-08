@@ -10,13 +10,12 @@ logger = logging.getLogger(__name__)
 MAX_DEPTH = 2
 MAX_PAGES = 60
 REQUEST_TIMEOUT = 10
-CRAWL_DELAY = 0.5  # seconds between requests — polite crawling
+CRAWL_DELAY = 0.5
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (compatible; UniversityETL/1.0; +https://github.com/your-repo)"
 }
 
-# Keywords that strongly suggest an admissions or tuition page
 POSITIVE_KEYWORDS = [
     "admission",
     "apply",
@@ -32,7 +31,6 @@ POSITIVE_KEYWORDS = [
     "undergraduate",
 ]
 
-# URL path segments that indicate non-relevant pages
 NEGATIVE_KEYWORDS = [
     "news",
     "events",
@@ -55,7 +53,6 @@ NEGATIVE_KEYWORDS = [
     "library",
 ]
 
-# Extensions that are never HTML pages
 BINARY_EXTENSIONS = (
     ".pdf", ".doc", ".docx", ".xls", ".xlsx",
     ".ppt", ".pptx", ".zip", ".jpg", ".jpeg",
@@ -70,7 +67,7 @@ def normalize_url(url: str) -> str:
     scheme = parsed.scheme or "https"
     netloc = parsed.netloc.lower()
     path = parsed.path or "/"
-    # Collapse multiple slashes but keep trailing slash only on root
+    
     path = path.rstrip("/") or "/"
     return f"{scheme}://{netloc}{path}"
 
@@ -98,7 +95,6 @@ def score_url(url: str) -> int:
 
     for kw in POSITIVE_KEYWORDS:
         if kw in lower:
-            # Weight higher-signal keywords more
             s += 5 if kw in {"admission", "tuition", "cost-of-attendance", "deadline"} else 3
 
     for kw in NEGATIVE_KEYWORDS:
@@ -117,7 +113,6 @@ def fetch_page(url: str) -> tuple[requests.Response | None, BeautifulSoup | None
     try:
         response = requests.get(url, headers=HEADERS, timeout=REQUEST_TIMEOUT, allow_redirects=True)
 
-        # Skip auth-required pages
         final_url = response.url.lower()
         if any(kw in final_url for kw in ("login", "signin", "sso", "auth", "portal")):
             logger.debug(f"Skipping auth-redirect: {url} → {response.url}")
@@ -127,7 +122,6 @@ def fetch_page(url: str) -> tuple[requests.Response | None, BeautifulSoup | None
             logger.debug(f"Non-200 status {response.status_code} for {url}")
             return None, None
 
-        # Only parse HTML — skip binary content types
         content_type = response.headers.get("Content-Type", "")
         if "text/html" not in content_type:
             logger.debug(f"Skipping non-HTML content ({content_type}): {url}")
@@ -149,7 +143,6 @@ def extract_links(soup: BeautifulSoup, base_url: str) -> list[str]:
         if not href or href.startswith(("mailto:", "javascript:", "tel:", "#")):
             continue
         full = urljoin(base_url, href)
-        # Strip fragment
         full = full.split("#")[0]
         if full.startswith("http"):
             links.append(full)
@@ -189,7 +182,6 @@ def crawl(seed_url: str) -> dict[str, int]:
 
         logger.info(f"[depth={depth}] Crawling: {url} (score={url_scores[url]})")
 
-        # Don't fetch links from max-depth pages (would exceed depth limit anyway)
         if depth == MAX_DEPTH:
             continue
 
@@ -213,8 +205,6 @@ def crawl(seed_url: str) -> dict[str, int]:
             link_score = score_url(normalized)
             url_scores.setdefault(normalized, link_score)
 
-            # Depth 1: include links with score >= 0 (not obviously irrelevant)
-            # Depth 2 pages are already at max depth — apply stricter filter
             threshold = 0 if depth == 0 else 3
             if link_score >= threshold:
                 queue.append((normalized, depth + 1))
